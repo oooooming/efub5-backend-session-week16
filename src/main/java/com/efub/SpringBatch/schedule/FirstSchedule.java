@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Configuration
 public class FirstSchedule {
 
 }
