@@ -13,35 +13,4 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ResponseBody
 public class MainController {
 
-    private final JobLauncher jobLauncher;
-    private final JobRegistry jobRegistry;
-
-    public MainController(JobLauncher jobLauncher, JobRegistry jobRegistry) {
-        this.jobLauncher = jobLauncher;
-        this.jobRegistry = jobRegistry;
-    }
-
-    @GetMapping("/first")
-    public String firstBatch(@RequestParam("value") String value) throws Exception {
-
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addString("date", value)
-                .toJobParameters();
-
-        jobLauncher.run(jobRegistry.getJob("firstJob"), jobParameters);
-
-        return "ok";
-    }
-
-    @GetMapping("/second")
-    public String secondBatch(@RequestParam("value") String value) throws Exception {
-
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addString("date", value)
-                .toJobParameters();
-
-        jobLauncher.run(jobRegistry.getJob("secondJob"), jobParameters);
-
-        return "ok";
-    }
 }
